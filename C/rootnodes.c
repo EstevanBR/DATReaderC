@@ -37,7 +37,7 @@ void getRootNodes(RootNode *rootNodes, FILE *datFile, uint32_t offset, uint32_t 
     // printf("\nrootNodeNext.stringOffset%"PRIu32, rootNode2->stringOffset);
     // uint32_t length = rootNode2->stringOffset - rootNode1->stringOffset;
     
-    printf("\nlength = %"PRIu32, length); // you might need to be doing the above line in the loop
+    // printf("\nlength = %"PRIu32, length); // you might need to be doing the above line in the loop
     // for (int i = 0; i < count-1; i++) {
     //     RootNode *rootNode = &rootNodes[i];
     //     if (i+1 < count) {
