@@ -24,18 +24,19 @@ void getRootNodes(RootNode *rootNodes, FILE *datFile, uint32_t offset, uint32_t 
         rootNode->dataOffset = byteswap32(rootNode->dataOffset);
         rootNode->stringOffset = byteswap32(rootNode->stringOffset);
     }
-    int stringTableOffset = ftell(datFile);
-    printf("\nstring table offset = %d\n", stringTableOffset);
-    fseek(datFile, 0, SEEK_END);
-    int stringTableLength = ftell(datFile) - stringTableOffset;
-    printf("\nfile size = %ld\n", ftell(datFile));
-    printf("length of stringTable is %d\n", stringTableLength);
-    fseek(datFile, -stringTableLength, SEEK_END);
-    RootNode *rootNode1 = &rootNodes[0];
-    RootNode *rootNode2 = &rootNodes[1];
-    printf("\nrootNodeNext.stringOffset%"PRIu32, rootNode1->stringOffset);
-    printf("\nrootNodeNext.stringOffset%"PRIu32, rootNode2->stringOffset);
-    uint32_t length = rootNode2->stringOffset - rootNode1->stringOffset;
+    // int stringTableOffset = ftell(datFile);
+    // printf("\nstring table offset = %d\n", stringTableOffset);
+    // fseek(datFile, 0, SEEK_END);
+    // int stringTableLength = ftell(datFile) - stringTableOffset;
+    // printf("\nfile size = %ld\n", ftell(datFile));
+    // printf("length of stringTable is %d\n", stringTableLength);
+    // fseek(datFile, -stringTableLength, SEEK_END);
+    // RootNode *rootNode1 = &rootNodes[0];
+    // RootNode *rootNode2 = &rootNodes[1];
+    // printf("\nrootNodeNext.stringOffset%"PRIu32, rootNode1->stringOffset);
+    // printf("\nrootNodeNext.stringOffset%"PRIu32, rootNode2->stringOffset);
+    // uint32_t length = rootNode2->stringOffset - rootNode1->stringOffset;
+    
     printf("\nlength = %"PRIu32, length); // you might need to be doing the above line in the loop
     // for (int i = 0; i < count-1; i++) {
     //     RootNode *rootNode = &rootNodes[i];
