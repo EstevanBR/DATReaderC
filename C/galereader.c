@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
     fclose(datFile);
     FileHeader_destroy(fileHeader);
     RootNodes_destroy(rootNodes);
-    free(pointerTable);
+    PointerTable_destroy(pointerTable);
     printf("\nclosed file\n");
     return 0;
 }
