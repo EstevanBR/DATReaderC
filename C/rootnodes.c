@@ -24,8 +24,27 @@ void getRootNodes(RootNode *rootNodes, FILE *datFile, uint32_t offset, uint32_t 
         rootNode->dataOffset = byteswap32(rootNode->dataOffset);
         rootNode->stringOffset = byteswap32(rootNode->stringOffset);
     }
-    // int stringTableOffset = ftell(datFile);
-    // printf("\nstring table offset = %d\n", stringTableOffset);
+    int stringTableOffset = ftell(datFile);
+    printf("\nstring table offset = %d\n", stringTableOffset);
+    
+    for (int i = 0; i < count; i++) {
+        long startingOffset = ftell(datFile);
+        int length = 0;
+        do {
+            length++;
+        } while (fgetc(datFile)!= 0x00);
+        RootNode *rootNode = &rootNodes[i];
+        printf("length: %d\n", length);
+        rootNode->string = malloc(length);
+        fseek(datFile, startingOffset, SEEK_SET);
+        fgets(rootNode->string, length, datFile);
+        fseek(datFile, 1, SEEK_CUR);
+    }
+
+    for (int i = 0; i < count; i++) {
+        printf("%d string is %s\n", i, rootNodes[i].string);
+    }
+
     // fseek(datFile, 0, SEEK_END);
     // int stringTableLength = ftell(datFile) - stringTableOffset;
     // printf("\nfile size = %ld\n", ftell(datFile));
