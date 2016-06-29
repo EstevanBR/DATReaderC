@@ -24,7 +24,7 @@ void PointerTable_print(PointerTable *pointerTable, uint32_t count) {
         }
     }
 }
-void PointerTable_destroy(PointerTable *pointerTable, uint32_t count) {
+void PointerTable_destroy(PointerTable *pointerTable) {
     assert(pointerTable != NULL);
     free(pointerTable);
 }
