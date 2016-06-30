@@ -6,17 +6,9 @@
 #include "fileheader.h"
 #include "byteswap.h"
 
-struct FileHeader *FileHeader_create(uint32_t fileSize,uint32_t pointerTableOffset, uint32_t pointerCount,uint32_t rootNodeCount,uint32_t referenceNodeCount,char *unknownString, uint32_t unknownPadding1, uint32_t unknownPadding2) {
+struct FileHeader *FileHeader_create(void) {
     FileHeader *fileHeader = malloc(sizeof(struct FileHeader));
     assert(fileHeader != NULL);
-    fileHeader->fileSize = fileSize;
-    fileHeader->pointerTableOffset = pointerTableOffset;
-    fileHeader->pointerCount = pointerCount;
-    fileHeader->rootNodeCount = rootNodeCount;
-    fileHeader->referenceNodeCount = referenceNodeCount;
-    strncpy(fileHeader->unknownString, unknownString, 4);
-    fileHeader->unknownPadding1 = unknownPadding1;
-    fileHeader->unknownPadding2 = unknownPadding2;
     return fileHeader;
 };
 

@@ -1,6 +1,5 @@
 struct ObjectStruct
 {
-    uint32_t offset;
     uint32_t stringOffset;
     uint32_t nextObjectOffset;
     uint32_t materialStructOffset;

@@ -6,7 +6,7 @@
 #include "pointertable.h"
 #define DATA_BLOCK 0x20
 
-PointerTable* getPointersFromPointerTable(FILE *datFile, uint32_t pointerTableOffset, uint32_t count) {
+PointerTable* GetPointersFromPointerTable(FILE *datFile, uint32_t pointerTableOffset, uint32_t count) {
     assert(datFile != NULL);
     fseek(datFile, pointerTableOffset+DATA_BLOCK, SEEK_SET);
     PointerTable *pointers = malloc(sizeof(uint32_t) * count);

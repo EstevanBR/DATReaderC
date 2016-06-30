@@ -14,7 +14,7 @@ struct RootNode *RootNodes_create (uint32_t count) {
     return rootNodes;
 };
 
-void getRootNodes(RootNode *rootNodes, FILE *datFile, uint32_t offset, uint32_t count) {
+void GetRootNodes(RootNode *rootNodes, FILE *datFile, uint32_t offset, uint32_t count) {
     assert(datFile != NULL);
     fseek(datFile, offset, SEEK_SET);
     for (int i = 0; i < count; i++) {
