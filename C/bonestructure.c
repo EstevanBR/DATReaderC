@@ -46,45 +46,25 @@ void GetBoneStructureRoots(RootNode *rootNodes, uint32_t count, BoneStructureRoo
         boneStructureRoot->childBoneStructOffset=byteswap32(boneStructureRoot->childBoneStructOffset);
         boneStructureRoot->nextBoneStructOffset=byteswap32(boneStructureRoot->nextBoneStructOffset);
         boneStructureRoot->objectStructOffset=byteswap32(boneStructureRoot->objectStructOffset);
-        
-        uint32_t temp32;
-
-        temp32 = *(uint32_t *)&boneStructureRoot->rotation_x;
-        temp32 = byteswap32(temp32);
-        boneStructureRoot->rotation_x = *(float *)&temp32;
-
-        temp32 = *(uint32_t *)&boneStructureRoot->rotation_y;
-        temp32 = byteswap32(temp32);
-        boneStructureRoot->rotation_y = *(float *)&temp32;
-
-        temp32 = *(uint32_t *)&boneStructureRoot->rotation_z;
-        temp32 = byteswap32(temp32);
-        boneStructureRoot->rotation_z = *(float *)&temp32;
-
-        temp32 = *(uint32_t *)&boneStructureRoot->scale_x;
-        temp32 = byteswap32(temp32);
-        boneStructureRoot->scale_x = *(float *)&temp32;
-
-        temp32 = *(uint32_t *)&boneStructureRoot->scale_y;
-        temp32 = byteswap32(temp32);
-        boneStructureRoot->scale_y = *(float *)&temp32;
-
-        temp32 = *(uint32_t *)&boneStructureRoot->scale_z;
-        temp32 = byteswap32(temp32);
-        boneStructureRoot->scale_z = *(float *)&temp32;
-
-        temp32 = *(uint32_t *)&boneStructureRoot->location_x;
-        temp32 = byteswap32(temp32);
-        boneStructureRoot->location_x = *(float *)&temp32;
-
-        temp32 = *(uint32_t *)&boneStructureRoot->location_y;
-        temp32 = byteswap32(temp32);
-        boneStructureRoot->location_y = *(float *)&temp32;
-
-        temp32 = *(uint32_t *)&boneStructureRoot->location_z;
-        temp32 = byteswap32(temp32);
-        boneStructureRoot->location_z = *(float *)&temp32;
-
+        float tempFloat;
+        tempFloat = boneStructureRoot->rotation_x;
+        boneStructureRoot->rotation_x = floatSwap(tempFloat);
+        tempFloat = boneStructureRoot->rotation_y;
+        boneStructureRoot->rotation_y = floatSwap(tempFloat);
+        tempFloat = boneStructureRoot->rotation_z;
+        boneStructureRoot->rotation_z = floatSwap(tempFloat);
+        tempFloat = boneStructureRoot->scale_x;
+        boneStructureRoot->scale_x = floatSwap(tempFloat);
+        tempFloat = boneStructureRoot->scale_y;
+        boneStructureRoot->scale_y = floatSwap(tempFloat);
+        tempFloat = boneStructureRoot->scale_z;
+        boneStructureRoot->scale_z = floatSwap(tempFloat);
+        tempFloat = boneStructureRoot->location_x;
+        boneStructureRoot->location_x = floatSwap(tempFloat);
+        tempFloat = boneStructureRoot->location_y;
+        boneStructureRoot->location_y = floatSwap(tempFloat);
+        tempFloat = boneStructureRoot->location_z;
+        boneStructureRoot->location_z = floatSwap(tempFloat);
         boneStructureRoot->inverseBindMatrixOffset=byteswap32(boneStructureRoot->inverseBindMatrixOffset);
         boneStructureRoot->pointerUnknown=byteswap32(boneStructureRoot->pointerUnknown);
     }
