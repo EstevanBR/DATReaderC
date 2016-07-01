@@ -9,7 +9,7 @@
 #include "bonestructure.h"
 
 #define DATA_BLOCK 0x20
-float ReverseFloat( const float inFloat );
+
 struct BoneStructureRoot *BoneStructureRoots_create(uint32_t count) {
     BoneStructureRoot *boneStructureRoots = malloc(sizeof(struct BoneStructureRoot) * count);
     assert(boneStructureRoots != NULL);
@@ -96,18 +96,4 @@ void BoneStructureRoots_print(BoneStructureRoot *boneStructureRoots, uint32_t co
 void BoneStructureRoots_destroy(BoneStructureRoot *boneStructureRoots) {
     assert(boneStructureRoots != NULL);
     free(boneStructureRoots);
-}
-
-float ReverseFloat( const float inFloat ) {
-   float retVal;
-   char *floatToConvert = ( char* ) & inFloat;
-   char *returnFloat = ( char* ) & retVal;
-
-   // swap the bytes into a temporary buffer
-   returnFloat[0] = floatToConvert[3];
-   returnFloat[1] = floatToConvert[2];
-   returnFloat[2] = floatToConvert[1];
-   returnFloat[3] = floatToConvert[0];
-
-   return retVal;
 }

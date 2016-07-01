@@ -6,6 +6,7 @@
 #include "pointertable.h"
 #include "byteswap.h"
 #include "bonestructure.h"
+#include "object.h"
 
 #define DATA_BLOCK 0x20
 
@@ -33,12 +34,21 @@ int main(int argc, char const *argv[])
     BoneStructureRoot *boneStructureRoots = BoneStructureRoots_create(fileHeader->rootNodeCount);
     GetBoneStructureRoots(rootNodes, fileHeader->rootNodeCount,boneStructureRoots, datFile);
     BoneStructureRoots_print(boneStructureRoots, fileHeader->rootNodeCount);
+
+    ObjectStruct *objectStruct = ObjectStruct_create();;
+    long offset = boneStructureRoots[0].objectStructOffset;
+    do {
+        GetObjectStruct(objectStruct, offset ,datFile);
+        offset = objectStruct->nextObjectOffset;
+        ObjectStruct_print(objectStruct);
+    } while (offset != 0x0000);
     
     fclose(datFile);
     FileHeader_destroy(fileHeader);
     RootNodes_destroy(rootNodes);
     PointerTable_destroy(pointerTable);
     BoneStructureRoots_destroy(boneStructureRoots);
+    ObjectStruct_destroy(objectStruct);
     printf("\nclosed file\n");
     return 0;
 }
