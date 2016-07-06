@@ -19,7 +19,7 @@ struct ObjectStruct *ObjectStruct_create(void) {
 
 void GetObjectStruct(ObjectStruct *objectStruct, uint32_t offset, FILE *datFile) {
     fseek(datFile, offset+DATA_BLOCK, SEEK_SET);
-    printf("before getting object, file is at %#.08lx\n", ftell(datFile));
+    printf("\nbefore getting object, file is at %#.08lx", ftell(datFile));
     assert(objectStruct != NULL);
     assert(datFile != NULL);
     fread(&objectStruct->stringOffset, sizeof(objectStruct->stringOffset), 1, datFile);
