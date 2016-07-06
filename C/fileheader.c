@@ -6,6 +6,15 @@
 #include "fileheader.h"
 #include "byteswap.h"
 
+#define KNRM  "\x1B[0m"
+#define KRED  "\x1B[31m"
+#define KGRN  "\x1B[32m"
+#define KYEL  "\x1B[33m"
+#define KBLU  "\x1B[34m"
+#define KMAG  "\x1B[35m"
+#define KCYN  "\x1B[36m"
+#define KWHT  "\x1B[37m"
+
 struct FileHeader *FileHeader_create(void) {
     FileHeader *fileHeader = malloc(sizeof(struct FileHeader));
     assert(fileHeader != NULL);
@@ -37,13 +46,13 @@ void FileHeader_destroy(FileHeader *fileHeader) {
     free(fileHeader);
 }
 void FileHeader_print(FileHeader *fileHeader) {
-    printf("\nfileHeader->fileSize: %"PRIu32"\n",fileHeader->fileSize);
-    printf("fileHeader->pointerTableOffset: %#.08x\n",fileHeader->pointerTableOffset);
-    printf("fileHeader->pointerCount: %"PRIu32"\n",fileHeader->pointerCount);
-    printf("fileHeader->rootNodeCount: %"PRIu32"\n",fileHeader->rootNodeCount);
-    printf("fileHeader->referenceNodeCount: %"PRIu32"\n",fileHeader->referenceNodeCount);
-    printf("fileHeader->unknownString: %s\n",fileHeader->unknownString);
-    printf("fileHeader->unknownPadding1: %"PRIu32"\n",fileHeader->unknownPadding1);
-    printf("fileHeader->unknownPadding2: %"PRIu32"\n",fileHeader->unknownPadding2);
+    printf("\nfileHeader->fileSize: "KRED"%"PRIu32"\n"KNRM,fileHeader->fileSize);
+    printf("fileHeader->pointerTableOffset: "KRED"%#.08x\n"KNRM,fileHeader->pointerTableOffset);
+    printf("fileHeader->pointerCount: "KRED"%"PRIu32"\n"KNRM,fileHeader->pointerCount);
+    printf("fileHeader->rootNodeCount: "KRED"%"PRIu32"\n"KNRM,fileHeader->rootNodeCount);
+    printf("fileHeader->referenceNodeCount: "KRED"%"PRIu32"\n"KNRM,fileHeader->referenceNodeCount);
+    printf("fileHeader->unknownString: "KRED"%s\n"KNRM,fileHeader->unknownString);
+    printf("fileHeader->unknownPadding1: "KRED"%"PRIu32"\n"KNRM,fileHeader->unknownPadding1);
+    printf("fileHeader->unknownPadding2: "KRED"%"PRIu32"\n"KNRM,fileHeader->unknownPadding2);
     
 }

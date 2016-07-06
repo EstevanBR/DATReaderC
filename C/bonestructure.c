@@ -10,6 +10,15 @@
 
 #define DATA_BLOCK 0x20
 
+#define KNRM  "\x1B[0m"
+#define KRED  "\x1B[31m"
+#define KGRN  "\x1B[32m"
+#define KYEL  "\x1B[33m"
+#define KBLU  "\x1B[34m"
+#define KMAG  "\x1B[35m"
+#define KCYN  "\x1B[36m"
+#define KWHT  "\x1B[37m"
+
 struct BoneStructureRoot *BoneStructureRoots_create(uint32_t count) {
     BoneStructureRoot *boneStructureRoots = malloc(sizeof(struct BoneStructureRoot) * count);
     assert(boneStructureRoots != NULL);
@@ -74,22 +83,22 @@ void BoneStructureRoots_print(BoneStructureRoot *boneStructureRoots, uint32_t co
     for (int i = 0; i < count; ++i)
     {
         BoneStructureRoot *boneStructureRoot = &boneStructureRoots[i];
-        printf("\nstringOffset: %#.08x", boneStructureRoot->stringOffset);
-        printf("\nunknownFlags: %#.08x", boneStructureRoot->unknownFlags);
-        printf("\nchildBoneStructOffset: %#.08x", boneStructureRoot->childBoneStructOffset);
-        printf("\nnextBoneStructOffset: %#.08x", boneStructureRoot->nextBoneStructOffset);
-        printf("\nobjectStructOffset: %#.08x", boneStructureRoot->objectStructOffset);
-        printf("\nrotation_x: %#.08f", boneStructureRoot->rotation_x);
-        printf("\nrotation_y: %#.08f", boneStructureRoot->rotation_y);
-        printf("\nrotation_z: %#.08f", boneStructureRoot->rotation_z);
-        printf("\nscale_x: %#.08f", boneStructureRoot->scale_x);
-        printf("\nscale_y: %#.08f", boneStructureRoot->scale_y);
-        printf("\nscale_z: %#.08f", boneStructureRoot->scale_z);
-        printf("\nlocation_x: %#.08f", boneStructureRoot->location_x);
-        printf("\nlocation_y: %#.08f", boneStructureRoot->location_y);
-        printf("\nlocation_z: %#.08f", boneStructureRoot->location_z);
-        printf("\ninverseBindMatrixOffset: %#.08x", boneStructureRoot->inverseBindMatrixOffset);
-        printf("\npointerUnknown: %#.08x\n", boneStructureRoot->pointerUnknown);
+        printf("\nstringOffset: "KRED"%#.08x"KNRM, boneStructureRoot->stringOffset);
+        printf("\nunknownFlags: "KRED"%#.08x"KNRM, boneStructureRoot->unknownFlags);
+        printf("\nchildBoneStructOffset: "KRED"%#.08x"KNRM, boneStructureRoot->childBoneStructOffset);
+        printf("\nnextBoneStructOffset: "KRED"%#.08x"KNRM, boneStructureRoot->nextBoneStructOffset);
+        printf("\nobjectStructOffset: "KRED"%#.08x"KNRM, boneStructureRoot->objectStructOffset);
+        printf("\nrotation_x: "KRED"%#.08f"KNRM, boneStructureRoot->rotation_x);
+        printf("\nrotation_y: "KRED"%#.08f"KNRM, boneStructureRoot->rotation_y);
+        printf("\nrotation_z: "KRED"%#.08f"KNRM, boneStructureRoot->rotation_z);
+        printf("\nscale_x: "KRED"%#.08f"KNRM, boneStructureRoot->scale_x);
+        printf("\nscale_y: "KRED"%#.08f"KNRM, boneStructureRoot->scale_y);
+        printf("\nscale_z: "KRED"%#.08f"KNRM, boneStructureRoot->scale_z);
+        printf("\nlocation_x: "KRED"%#.08f"KNRM, boneStructureRoot->location_x);
+        printf("\nlocation_y: "KRED"%#.08f"KNRM, boneStructureRoot->location_y);
+        printf("\nlocation_z: "KRED"%#.08f"KNRM, boneStructureRoot->location_z);
+        printf("\ninverseBindMatrixOffset: "KRED"%#.08x"KNRM, boneStructureRoot->inverseBindMatrixOffset);
+        printf("\npointerUnknown: "KRED"%#.08x\n"KNRM, boneStructureRoot->pointerUnknown);
     }
 }
 
